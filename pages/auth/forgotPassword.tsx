@@ -15,7 +15,8 @@ const ForgotPassword = () => {
             await Axios.post('/api/v1/users/forgotPassword',body)
             useTourskyStore.getState().setAlertPopup({ status: true, type: "success", message: "Email sended successfuly!" })
         } catch (error) {
-            useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
+            console.log(error)
+            // useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
         }
     }
 

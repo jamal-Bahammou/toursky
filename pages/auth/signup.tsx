@@ -24,7 +24,8 @@ const Signup = () => {
             useTourskyStore.getState().setAlertPopup({ status: true, type: "success", message: "Logged in successfuly!" })
             router.push('/')
         } catch (error) {
-            useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
+            console.log(error)
+            // useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
         }
     }
 

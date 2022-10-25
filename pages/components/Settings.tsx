@@ -35,7 +35,8 @@ const Settings = () => {
             useTourskyStore.getState().setUser(res.data.user)
             useTourskyStore.getState().setAlertPopup({ status: true, type: "success", message: "ACCOUNT updated successfully!" })
         } catch (error) {
-            useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
+            console.log(error)
+            // useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
         }
     }
 
@@ -50,7 +51,8 @@ const Settings = () => {
             reset()
             useTourskyStore.getState().setAlertPopup({ status: true, type: "success", message: "PASSWORD updated successfully!" })
         } catch (error) {
-            useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
+            console.log(error)
+            // useTourskyStore.getState().setAlertPopup({ status: true, type: "error", message: error.response.data.message })
         }
     }
 

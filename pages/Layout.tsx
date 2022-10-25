@@ -18,10 +18,6 @@ const Layout = ({children}: any) => {
       useTourskyStore.getState().setStripe(stripe)
     }, [])
 
-
-    console.log('This is it')
-
-
   return (
     <>
         <Head>

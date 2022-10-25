@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const Axios = axios.create({
-    baseURL: process.env.SERVER_HOST,
+    baseURL: 'https://toursky.herokuapp.com/',
     headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': true, 'Content-Type': 'application/json'},
 })
 

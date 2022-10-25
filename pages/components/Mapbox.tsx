@@ -40,7 +40,7 @@ const Mapbox = ({locations}:MapboxType) => {
             new mapboxgl
                 .Popup({offset:25,focusAfterOpen:false})
                 .setLngLat(location.coordinates)
-                .setHTML(`<p>Day ${location.day}: ${location.description}</p>`)
+                .setHTML(`<p>Day ${location.day}: ${location?.description}</p>`)
                 .addTo(map.current)
 
             // EXTEND MAP

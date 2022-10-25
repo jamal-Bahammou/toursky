@@ -41,7 +41,7 @@ const TourView = ({tour,reviews}:Props) => {
                             <svg className="heading-box__icon">
                                 <use xlinkHref="/img/icons.svg#icon-map-pin"></use>
                             </svg>
-                            <span className="heading-box__text">{tour.startLocation.description}</span>
+                            <span className="heading-box__text">{tour?.startLocation?.description}</span>
                         </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@ const TourView = ({tour,reviews}:Props) => {
 
                 <div className="description-box">
                     <h2 className="heading-secondary ma-bt-lg">About the park camper tour</h2>
-                    {tour.description.split('\n').map((paragraph,index) => <p key={index} className="description__text">{paragraph}</p>)}
+                    {tour?.description?.split('\n').map((paragraph,index) => <p key={index} className="description__text">{paragraph}</p>)}
                 </div>
                 </section>
 

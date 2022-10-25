@@ -19,6 +19,8 @@ const Layout = ({children}: any) => {
     }, [])
 
 
+    console.log('This is it')
+
 
   return (
     <>

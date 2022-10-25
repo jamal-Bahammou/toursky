@@ -27,7 +27,7 @@ const Card = (tour:Tour) => {
               <svg className="card__icon">
                 <use xlinkHref="img/icons.svg#icon-map-pin"></use>
               </svg>
-              <span>{tour.startLocation.description}</span>
+              <span>{tour?.startLocation?.description}</span>
             </div>
             <div className="card__data">
               <svg className="card__icon">

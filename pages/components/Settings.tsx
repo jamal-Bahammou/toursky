@@ -71,7 +71,7 @@ const Settings = () => {
                         <input type="email" {...register("email")} className="form__input" required name="email" />
                     </div>
                     <div className="form__group form__photo-upload">
-                        <img className="form__user-photo" src={getFieldState("photo").isTouched ? image : `http://127.0.0.1:3030/img/users/${user?.photo}`} alt="User photo" />
+                        <img className="form__user-photo" src={getFieldState("photo").isTouched ? image : `https://toursky.herokuapp.com/img/users/${user?.photo}`} alt="User photo" />
                         <input id="photoFor" type="file" {...register("photo")} className="form__upload" accept="image/*" name="photo" />
                         <label htmlFor="photoFor">Choose new photo</label>
                         <svg onClick={() => resetOverviewImage()} className='form__label-icon'>

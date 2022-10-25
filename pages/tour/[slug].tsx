@@ -24,7 +24,7 @@ const TourView = ({tour,reviews}:Props) => {
                 <section className="section-header">
                     <div className="header__hero">
                         <div className="header__hero-overlay">&nbsp;</div>
-                        <img className="header__hero-img" src={`http://127.0.0.1:3030/img/tours/${tour.imageCover}`} alt={tour.name} />
+                        <img className="header__hero-img" src={`https://toursky.herokuapp.com/img/tours/${tour.imageCover}`} alt={tour.name} />
                     </div>
                     <div className="heading-box">
                         <h1 className="heading-primary">
@@ -86,7 +86,7 @@ const TourView = ({tour,reviews}:Props) => {
                         <h2 className="heading-secondary ma-bt-lg">Your tour guides</h2>
                         {tour.guides.map(guide => (
                             <div key={guide._id} className="overview-box__detail">
-                                <img src={`http://127.0.0.1:3030/img/users/${guide.photo}`} alt="Lead guide" className="overview-box__img"/>
+                                <img src={`https://toursky.herokuapp.com/img/users/${guide.photo}`} alt="Lead guide" className="overview-box__img"/>
                                 <span className="overview-box__label">{guide.role === "guide" ? 'Tour ' : ''}{guide.role.replace('-', ' ')}</span>
                                 <span className="overview-box__text">{guide.name}</span>
                             </div>
@@ -104,7 +104,7 @@ const TourView = ({tour,reviews}:Props) => {
                 <section className="section-pictures">
                     {tour.images.map((image,index) => (
                         <div key={index} className="picture-box">
-                            <img className={`picture-box__img picture-box__img--${index+1}`} src={`http://127.0.0.1:3030/img/tours/${image}`} alt="The Park Camper Tour 1"/>
+                            <img className={`picture-box__img picture-box__img--${index+1}`} src={`https://toursky.herokuapp.com/img/tours/${image}`} alt="The Park Camper Tour 1"/>
                         </div>
                     ))}
                 </section>
@@ -117,7 +117,7 @@ const TourView = ({tour,reviews}:Props) => {
                             {reviews.map((review:Review,index) => (
                                     <div key={index} className="reviews__card">
                                         <div className="reviews__avatar">
-                                            <img src={`http://127.0.0.1:3030/img/users/${review.user.photo}`} alt="Jim Brown" className="reviews__avatar-img"/>
+                                            <img src={`https://toursky.herokuapp.com/img/users/${review.user.photo}`} alt="Jim Brown" className="reviews__avatar-img"/>
                                             <h6 className="reviews__user">{review.user.name}</h6>
                                         </div>
                                         <p className="reviews__text">{review.review}</p>
@@ -140,8 +140,8 @@ const TourView = ({tour,reviews}:Props) => {
                         <div className="cta__img cta__img--logo">
                         <img src="/img/logo-white.png" alt="Natours logo" className="" />
                         </div>
-                        <img src={`http://127.0.0.1:3030/img/tours/${tour.images[0]}`} alt="" className="cta__img cta__img--1" />
-                        <img src={`http://127.0.0.1:3030/img/tours/${tour.images[1]}`} alt="" className="cta__img cta__img--2" />
+                        <img src={`https://toursky.herokuapp.com/img/tours/${tour.images[0]}`} alt="" className="cta__img cta__img--1" />
+                        <img src={`https://toursky.herokuapp.com/img/tours/${tour.images[1]}`} alt="" className="cta__img cta__img--2" />
 
                         <div className="cta__content">
                         <h2 className="heading-secondary">What are you waiting for?</h2>

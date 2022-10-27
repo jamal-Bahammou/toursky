@@ -33,13 +33,14 @@ const Card = (tour:Tour) => {
               <svg className="card__icon">
                 <use xlinkHref="img/icons.svg#icon-calendar"></use>
               </svg>
-              <span>{new Date(tour.startDates[0]).toLocaleString('en-us', {month:'long',year:'numeric'})}</span>
+              <span>{new Date().toLocaleString('en-us', {month:'long',year:'numeric'})}</span>
+              {/* <span>{new Date(tour.startDates[0]).toLocaleString('en-us', {month:'long',year:'numeric'})}</span> */}
             </div>
             <div className="card__data">
               <svg className="card__icon">
                 <use xlinkHref="img/icons.svg#icon-flag"></use>
               </svg>
-              <span>{tour.locations.length} stops</span>
+              <span>{tour?.locations?.length} stops</span>
             </div>
             <div className="card__data">
               <svg className="card__icon">

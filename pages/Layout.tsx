@@ -21,7 +21,7 @@ const Layout = ({children}: any) => {
   return (
     <>
         <Head>
-          <title>Toursky | All Tours</title>
+          <title>Test Toursky | All Tours</title>
           <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,500,700" />
         </Head>

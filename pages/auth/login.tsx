@@ -16,7 +16,7 @@ const Login = () => {
                 email: values.email,
                 password: values.password,
             }
-            await Axios.post('/api/v1/users/login',body, { withCredentials:true })
+            await Axios.post('/api/v1/users/login',body)
             useTourskyStore.getState().setAuthenticator(true)
             useTourskyStore.getState().setAlertPopup({ status: true, type: "success", message: "Logged in successfuly!" })
             router.push('/')

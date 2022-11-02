@@ -7,19 +7,23 @@ const Settings = () => {
 
     const { user } = useTourskyStore()
     const { register, handleSubmit, reset, resetField, watch, getFieldState } = useForm()
-    const [image,setImage] = useState(null)
+    const [image,setImage] = useState('data:image/jpeg;base64')
 
     useEffect(() => {
         reset({name:user.name,email:user.email,photo:[new Blob()]})
     }, [user])
 
     useEffect(() => {
-        setImage(URL.createObjectURL(watch('photo')[0]))
+        if(getFieldState("photo").isTouched){
+            const reader = new FileReader();
+            reader.readAsDataURL(watch('photo')[0])
+            reader.onloadend = () => setImage(reader.result)
+        }
     }, [watch('photo')])
 
     const resetOverviewImage = () => {
         resetField('photo')
-        setImage(null)
+        setImage('data:image/jpeg;base64')
     }
 
     const userSubmitHandler = async (values:any) => {
@@ -27,6 +31,7 @@ const Settings = () => {
             const formData = new FormData()
             formData.append('name',values.name)
             formData.append('email',values.email)
+            formData.append('data',image)
             if(getFieldState("photo").isTouched) formData.append('photo',values.photo[0])
 
             const headers = {'Content-Type': 'multipart/form-data'}
@@ -71,7 +76,7 @@ const Settings = () => {
                         <input type="email" {...register("email")} className="form__input" required name="email" />
                     </div>
                     <div className="form__group form__photo-upload">
-                        <img className="form__user-photo" src={getFieldState("photo").isTouched ? image : `https://toursky.herokuapp.com/img/users/${user?.photo}`} alt="User photo" />
+                        <img className="form__user-photo" src={getFieldState("photo").isTouched ? image : user?.photo} alt="User photo" />
                         <input id="photoFor" type="file" {...register("photo")} className="form__upload" accept="image/*" name="photo" />
                         <label htmlFor="photoFor">Choose new photo</label>
                         <svg onClick={() => resetOverviewImage()} className='form__label-icon'>

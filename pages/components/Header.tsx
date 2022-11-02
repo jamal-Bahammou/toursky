@@ -52,7 +52,7 @@ const Header = () => {
         <div onClick={() => logout()} className="nav__el">Log out</div>
         <Link href="/me/settings">
           <div className="nav__el">
-            <img src={`https://toursky.herokuapp.com/img/users/${user?.photo}`} alt="User photo" className="nav__user-img" />
+            <img src={user?.photo} alt="User photo" className="nav__user-img" />
             <span>{user?.name.split(' ')[0]}</span>
           </div>
         </Link>

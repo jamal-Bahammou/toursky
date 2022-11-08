@@ -11,12 +11,12 @@ const Layout = ({children}: any) => {
   useEffect(() => {
     if(status)
       setTimeout(() => {useTourskyStore.getState().setAlertPopup({status: false, type: "success", message: ""})}, 3000)
-    }, [status])
+  }, [status])
 
   useEffect(() => {
-      const stripe = Stripe('pk_test_51LuwwtHdYhmEqyjwyKoMflY3hudBSQkddOp7M2cuM5CBfbMD4dnOK0n5vlf8aQgDKZnbaDQjCLvrt7NItZi0AVYF00MoyJ8soO');
-      useTourskyStore.getState().setStripe(stripe)
-    }, [])
+    const stripe = Stripe('pk_test_51LuwwtHdYhmEqyjwyKoMflY3hudBSQkddOp7M2cuM5CBfbMD4dnOK0n5vlf8aQgDKZnbaDQjCLvrt7NItZi0AVYF00MoyJ8soO');
+    useTourskyStore.getState().setStripe(stripe)
+  }, [])
 
   return (
     <>

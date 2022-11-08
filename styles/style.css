@@ -148,6 +148,7 @@
     text-transform: uppercase;
     font-weight: 300;
   }
+  
   .heading-primary span,
   .heading-tertirary span {
     padding: 1rem 1.5rem;
@@ -184,6 +185,54 @@
     width: 70%;
     z-index: 10;
   }
+
+  /* CARD MINI ------------------------ */
+  .heading-primary-mini,
+  .heading-tertirary-mini {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  
+  .heading-primary-mini span,
+  .heading-tertirary-mini span {
+    padding: .4rem 1.2rem;
+    line-height: 1;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      from(rgba(21,169,206, 0.85)),
+      to(rgba(11,85,103, 0.85))
+    );
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(21,169,206, 0.85),
+      rgba(11,85,103, 0.85)
+    );
+  }
+  
+  .heading-primary-mini {
+    font-size: 5rem;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .heading-tertirary-mini {
+    font-size: 1.7rem;
+    text-align: right;
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    width: 60%;
+    z-index: 10;
+  }
+
+
+  /* END MINI ---- */
   
   .btn,
   .btn:link,
@@ -244,6 +293,11 @@
   .btn--small {
     padding: 1.25rem 3rem !important;
     font-size: 1.4rem !important;
+  }
+
+  .btn--small-mini {
+    padding: .8rem 2rem !important;
+    font-size: 1.2rem !important;
   }
   
   .btn-small,
@@ -784,9 +838,9 @@
     display: flex;
   }
   .user-view__menu {
-    -webkit-box-flex: 32rem;
-    -ms-flex: 32rem 0 0px;
-    flex: 32rem 0 0;
+    -webkit-box-flex: 26rem;
+    -ms-flex: 26rem 0 0px;
+    flex: 26rem 0 0;
     background-image: -webkit-gradient(
       linear,
       left top,
@@ -1120,6 +1174,12 @@
     clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
     height: 22rem;
   }
+  .card__picture-mini {
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+    height: 16rem;
+  }
   .card__picture-overlay {
     position: absolute;
     width: 100%;
@@ -1146,6 +1206,13 @@
     grid-row-gap: 1.75rem;
     grid-column-gap: 2rem;
     padding: 2.5rem 3rem;
+  }
+  .card__details-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: .8rem;
+    grid-column-gap: 1rem;
+    padding: 1.5rem 1.8rem;
   }
   .card__sub-heading {
     font-size: 1.2rem;

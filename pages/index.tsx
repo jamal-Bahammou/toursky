@@ -1,42 +1,21 @@
 import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Card from './components/Card'
 import { useTourskyStore } from '../src/zustand'
 import { Axios } from './api'
 import { Tour } from '../typings'
 
 interface Tours {
-  tours: [Tour],
-  session_id: string
+  tours: [Tour]
 }  
 
-const Home = ({tours,session_id}:Tours) => {
+const Home = ({tours}:Tours) => {
 
-  const { user } = useTourskyStore()
+  const router = useRouter()
 
   useEffect(() => {
-    try {
-      if(!!session_id) {
-        const getCheckoutSessionStatus = async () => {
-          const res1 = await Axios.get(`/api/v1/bookings/checkout-session-status/${session_id}`)
-          console.log('✅ payment ', res1.data.session.status)
-
-          if(res1.data.session.status === "complete"){
-            const body = {
-              tour: res1.data.session.client_reference_id,
-              user: user._id,
-              price: res1.data.session.amount_total / 100,
-            }
-            console.log(user)
-            await Axios.post(`/api/v1/bookings`, body)
-          }
-
-        }
-        getCheckoutSessionStatus()
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }, [session_id])
+    router.push('/')
+  },[])
 
   return (
     <main className="main">
@@ -52,17 +31,38 @@ const Home = ({tours,session_id}:Tours) => {
 export default Home
 
 interface Params {
+  req: {
+    cookies: { jwt: string }
+  }
   query: {
-    session_id: string
+    session_id: string,
+    client_id: string,
   }
 }
 
-export const getServerSideProps = async ({query}:Params) => {
+export const getServerSideProps = async ({req,query}:Params) => {
+  
+  const res1 = await Axios.get('/api/v1/tours')
+  useTourskyStore.getState().setTours(res1.data.tours)
 
-  const res = await Axios.get('/api/v1/tours')
-  useTourskyStore.getState().setTours(res.data.tours)
+  // console.log(req.cookies)
+  // console.log(query)
+  
+  if(!!query.session_id) {
+    const headers = {"Authorization" : `Bearer ${req.cookies.jwt}`}
+    const res2 = await Axios.get(`/api/v1/bookings/checkout-session-status/${query.session_id}`, { headers })
+    if(res2.data.session.status === "complete"){
+      console.log('✅ payment ', res2.data.session.status)
+      const body = {
+        tour: res2.data.session.client_reference_id,
+        user: query.client_id,
+        price: res2.data.session.amount_total / 100,
+      }
+      await Axios.post(`/api/v1/bookings`, body, { headers })
+    }
+  }
 
   return {
-    props: { tours: res.data.tours, session_id: !!query.session_id? query.session_id : "" }
+    props: { tours: res1.data.tours }
   }
 }

@@ -45,8 +45,8 @@ export const getServerSideProps = async ({req,query}:Params) => {
   const res1 = await Axios.get('/api/v1/tours')
   useTourskyStore.getState().setTours(res1.data.tours)
 
-  // console.log(req.cookies)
-  // console.log(query)
+  console.log(req.cookies)
+  console.log(query)
   
   if(!!query.session_id) {
     const headers = {"Authorization" : `Bearer ${req.cookies.jwt}`}
